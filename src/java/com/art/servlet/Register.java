@@ -70,8 +70,8 @@ PrintWriter pw = response.getWriter();
               boolean addUser = UserDao.addUser(user);
               
               
-               String a=SendSmsNew.sendotp(mobile_number,first_name,last_name,otp);
-        System.out.println("------------"+a);
+       //        String a=SendSmsNew.sendotp(mobile_number,first_name,last_name,otp);
+     //   System.out.println("------------"+a);
         
                  response.sendRedirect("otp.jsp");
     }
