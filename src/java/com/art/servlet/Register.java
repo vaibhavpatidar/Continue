@@ -44,7 +44,15 @@ public class Register extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String name="";
+         String first_name="";
+         String last_name="";
+         String password="";
+         String email_id="";
+         String mobile_number="";
+         String gender="";
+         String state="";
+         String dob="";
+         
         FileItem item = null;
         String itemName = "";
         String profile= "";
@@ -57,7 +65,8 @@ public class Register extends HttpServlet {
                 String realPath = context.getRealPath("/");
                 System.out.println("project path  = " + realPath);
                 realPath = realPath.replace(File.separator+"build", "");
-                System.out.println("path without build " + realPath + "@");
+                realPath= realPath +"@";
+                System.out.println("path without build " + realPath + "");
                 
                 realPath=realPath.replace("@", "\\");
                 System.out.println("----------------------------------------"+ realPath);
@@ -85,19 +94,72 @@ public class Register extends HttpServlet {
                             String fieldname = item.getFieldName();
                             String fieldData = item.getString();
                           if (fieldname.equals("first_name")) {
-                               name = fieldData;                  
+                              first_name = fieldData;                  
+                          }
+                          if (fieldname.equals("last_name")) {
+                              last_name = fieldData;                  
+                          }
+                          if (fieldname.equals("password")) {
+                              password = fieldData;                  
+                          }
+                          if (fieldname.equals("email_id")) {
+                              email_id = fieldData;                  
+                          }
+                          if (fieldname.equals("mobile_number")) {
+                              mobile_number = fieldData;                  
+                          }
+                          if (fieldname.equals("gender")) {
+                              gender = fieldData;                  
+                          }
+                          if (fieldname.equals("state")) {
+                              state = fieldData;                  
+                          }
+                          if (fieldname.equals("dob")) {
+                              dob = fieldData;                  
                           }
                         
-                        }
-                         User user = new User();
-                user.setFirstname(name);
-                user.setProfile(profile);
-                 
+                        }}
+                       
+                
+                        System.out.println(first_name);
+                        System.out.println("^^^^^^^^^^"+last_name);
+                        System.out.println(password);
+                        System.out.println(email_id);
+                        System.out.println(mobile_number);
+                        System.out.println(gender);
+                        System.out.println(state);
+                        System.out.println(dob);
+                        System.out.println(profile);
+                        
+                          String OTPCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                StringBuilder otpp = new StringBuilder();
+                Random rnd = new Random();
+                while (otpp.length() < 6) { // length of the random string.
+                    int index = (int) (rnd.nextFloat() * OTPCHARS.length());
+                    otpp.append(OTPCHARS.charAt(index));
+                }
+                String otp = otpp.toString();
+                
+                
+                  User user=new User();
+              user.setFirstname(first_name);
+              user.setLastname(last_name);
+              user.setEmail(email_id);
+              user.setGender(gender);
+              user.setMobile(mobile_number);
+              user.setDob(dob);
+              user.setPassword(password);
+              user.setState(state);
+              user.setOtp(otp);
+              user.setProfile(profile);
+              boolean addUser = UserDao.addUser(user);
+              
+              
       //      boolean flag=UserDao.editProfileImage(user);
      //   if(!flag){
             response.sendRedirect("otp.jsp");
     //    }
-                    }
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

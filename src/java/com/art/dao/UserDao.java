@@ -40,11 +40,12 @@ public static boolean addUser(User user)
     String state = user.getState();
     String gender =user.getGender();
     String otp =user.getOtp();
+    String profile=user.getProfile();
     boolean flag=true;
     try {
                 
 		Connection con = DBConnection.getConnection();
-                 String sql = "INSERT INTO registration (first_name, last_name, mobile_number, email_id, dob, password, gender, state, otp) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                 String sql = "INSERT INTO registration (first_name, last_name, mobile_number, email_id, dob, password, gender, state, otp, profile) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, first_name);
 		ps.setString(2, last_name);
@@ -55,6 +56,7 @@ public static boolean addUser(User user)
 		ps.setString(7, gender);
                 ps.setString(8, state);
                 ps.setString(9, otp);
+                ps.setString(10, profile);
 		flag=ps.execute();
         
         }
