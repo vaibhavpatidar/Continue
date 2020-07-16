@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -50,14 +51,15 @@ public class Login extends HttpServlet {
         String firstname="Vaibhav";
         String lastname= "Patidar";
         
-       
+          HttpSession session = request.getSession(false);
         
                  System.out.println("================="+id);
                 if(id==0){
                      response.sendRedirect("registration.jsp");
                 }
                 else{
-                     response.sendRedirect("index.html");
+                        session.setAttribute("id", id);
+                    response.sendRedirect("otp.jsp");
                 }
         
     }

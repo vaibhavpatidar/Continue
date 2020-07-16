@@ -100,5 +100,9 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public void setProfile(String profile) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 } 

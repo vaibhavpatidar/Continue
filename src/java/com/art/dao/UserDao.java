@@ -83,5 +83,5 @@ public static boolean addUser(User user)
             e.printStackTrace();
         }
         return id;
-    }
-}
+    }}
+
