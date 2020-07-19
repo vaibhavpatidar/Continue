@@ -11,7 +11,7 @@ package com.art.db;
  */
 public interface DBProperties {
     static String USERNAME="root";
-    static String PASSWORD="root";
+    static String PASSWORD="";
     static String URL="jdbc:mysql://localhost:3306/art_nexuss";
     static String DRIVER="com.mysql.jdbc.Driver";
 }
