@@ -4,20 +4,26 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>com.art.servlet.Register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>like</servlet-name>
+        <servlet-class>com.art.servlet.like</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
-    </servlet-mapping> 
-    
-     <servlet>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.art.servlet.Login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
-    </servlet-mapping> 
-    
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>like</servlet-name>
+        <url-pattern>/like</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

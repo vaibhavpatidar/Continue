@@ -22,6 +22,12 @@ dob:<input type="date" name="dob"/><br/><br/>
 
 <input type="submit" value="submit"/>  
   
+
+
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="DbRQ2I09"></script>
+<div class="fb-comments" data-href="http://localhost:8084/Win/registration.jsp" data-numposts="5" data-width=""></div>
 </form>  
 </body>  
 </html> 

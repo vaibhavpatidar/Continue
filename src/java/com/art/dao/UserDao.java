@@ -85,5 +85,40 @@ public static boolean addUser(User user)
             e.printStackTrace();
         }
         return id;
-    }}
+    }
+
+    public static int clicklike(String id,String codee) throws SQLException {
+         boolean flag = true;
+         int a=0;
+        Connection conn = DBConnection.getConnection();
+
+        System.out.println("+++++++++++++++++++++="+id+"  "+codee);
+                      String sql = "update likebutton set likee = concat(likee, '"+id+"') where code = '"+codee+"'";
+                System.out.println(sql);
+                PreparedStatement ps = conn.prepareStatement(sql);
+                System.out.println("==========");
+                flag = ps.execute();
+
+                
+                return a;
+    
+    }
+
+    public static String checkid(String codee) {
+          Connection conn = DBConnection.getConnection();
+     String likee="";
+        try {
+            String sql = "select likee from likebutton where code ='"+codee+"'";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            System.out.println(sql);
+            while (rs.next()) {
+               likee  = rs.getString("likee");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return likee;
+    }
+}
 
